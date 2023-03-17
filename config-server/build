@@ -1,0 +1,4 @@
+docker build -t config-server:V1 .
+
+docker network create micro-net 
+docker run -p 8888:8888 --name config-server --network micro-net config-server:V1

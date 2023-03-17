@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: servicio-reciprocos
+        uri: lb://servicio-reciprocos
+        predicates:
+          - Path=/api/reciprocos/**
+        filters:
+          - StripPrefix=2
+      - id: persistencia-reciprocos
+        uri: lb://persistencia-reciprocos
+        predicates:
+          - Path=/persistencia/reciprocos/**
+        filters:
+          - StripPrefix=2
+      - id: api-ejemplo
+        uri: lb://api-ejemplo
+        predicates:
+          - Path=/ejemplo/prueba/**
+        filters:
+          - StripPrefix=2
